@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💰 Income Expense Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen text-gray-800 font-inter">
+
+  <div class="max-w-3xl mx-auto p-6">
+    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 space-y-8">
+
+      <h1 class="text-4xl font-bold text-center text-indigo-700">💰 Income & Expense Tracker</h1>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+        <div class="bg-green-50 text-green-700 p-4 rounded-xl shadow">
+          <p class="text-sm font-semibold">Total Income</p>
+          <p id="total-income" class="text-2xl font-bold">₹0</p>
+        </div>
+        <div class="bg-red-50 text-red-700 p-4 rounded-xl shadow">
+          <p class="text-sm font-semibold">Total Expenses</p>
+          <p id="total-expense" class="text-2xl font-bold">₹0</p>
+        </div>
+        <div class="bg-indigo-50 text-indigo-700 p-4 rounded-xl shadow">
+          <p class="text-sm font-semibold">Net Balance</p>
+          <p id="net-balance" class="text-2xl font-bold">₹0</p>
+        </div>
+      </div>
+
+      <form id="entry-form" class="grid md:grid-cols-2 gap-4">
+        <div>
+          <input type="text" id="description" placeholder="Description"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none" required/>
+        </div>
+        <div>
+          <input type="number" id="amount" placeholder="Amount"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none" required/>
+        </div>
+        <div class="col-span-2 flex items-center space-x-6">
+          <label class="flex items-center space-x-2">
+            <input type="radio" name="type" value="income" class="accent-green-600" required />
+            <span class="text-sm">Income</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="radio" name="type" value="expense" class="accent-red-600" required />
+            <span class="text-sm">Expense</span>
+          </label>
+        </div>
+        <div class="col-span-2 flex justify-between gap-4">
+          <button type="submit"
+            class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg w-full transition-all">💾 Save</button>
+          <button type="button" id="reset-btn"
+            class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded-lg w-full transition-all">🔄 Reset</button>
+        </div>
+      </form>
+
+      <div class="flex justify-center gap-6 text-sm mt-6">
+        <label class="cursor-pointer">
+          <input type="radio" name="filter" value="all" class="accent-indigo-500" checked />
+          <span class="ml-1">All</span>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="filter" value="income" class="accent-green-600" />
+          <span class="ml-1">Income</span>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="filter" value="expense" class="accent-red-600" />
+          <span class="ml-1">Expense</span>
+        </label>
+      </div>
+
+      <div id="entry-list" class="space-y-4 max-h-[300px] overflow-y-auto pr-2">
+      </div>
+
+      <div id="no-entries-msg" class="text-center text-gray-400 hidden">
+        <p class="text-sm">No entries found. Add your first income or expense! 🚀</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
